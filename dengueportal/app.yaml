@@ -10,4 +10,10 @@ handlers:
   upload: favicon\.ico
 
 - url: /
-  script: ../public/index.php
+  script: home.app
+
+- url: /index\.html
+  script: home.app
+
+- url: /stylesheets
+  static_dir: stylesheets
