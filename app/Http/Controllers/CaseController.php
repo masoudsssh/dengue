@@ -22,7 +22,7 @@ class CaseController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		return CaseItem::all();
+		return CaseItem::orderBy('id','desc')->get();
 	}
 
 	/**
@@ -32,11 +32,20 @@ class CaseController extends Controller {
 	 */
 	public function store(CreateCaseRequest $request)
 	{
-        $data = $request->all();
-        $data['user_id'] = $request->user()->id;
-        $case = CaseItem::firstOrCreate($data);
-        $msg = array('message'=>'The case is created successfully.', 'status'=>200);
-        return json_encode($msg);
+		//return var_dump(session()->has('app.uploadedFile'));
+		if(session()->has('app.uploadedFile') && session('app.uploadedFile')!=""){
+			foreach(session('app.uploadedFile') as $files):
+				$input['filePath'] = $files[0];
+				$input['fileNewName'] = $files[1];
+			endforeach;
+			CaseItem::firstOrCreate(array('user_id'=>1, 'title'=>$request->title, 'description'=>$request->description, 'image'=>'/uploadedFiles/'.$input['filePath'] ));
+			session()->flush();
+			$msg = array('message'=>'The case is created successfully.', 'status'=>200);
+        	return json_encode($msg);
+		}else{
+		        $msg = array('message'=>'Something is wrong.', 'status'=>401);
+		        return json_encode($msg);
+		}
 	}
 
 	/**

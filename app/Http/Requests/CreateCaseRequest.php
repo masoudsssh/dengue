@@ -16,8 +16,7 @@ class CreateCaseRequest extends FormRequest {
 
 	public function rules(){
 		return [
-			'title' => 'required',
-			'category' => 'required'
+			'description' => 'required'
 		];
 	}
 

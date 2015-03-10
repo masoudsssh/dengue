@@ -1,0 +1,239 @@
+/* Responsive CSS Styles Table of Contents */
+.img_border {
+border: 5px solid #e3e3e3;
+width: 98%; }
+
+@media only screen and (min-width: 1000px){}
+@media only screen and (min-width: 768px) and (max-width: 999px){
+.site_wrapper {
+	width: 100%;
+	margin: 0 auto;
+}
+.boxed_wrapper {
+	width: 100%;
+}
+.container_full {
+	width: 100%;
+}
+.container {
+	width: 95%;
+}
+.container_about-us, .container_services, .container_design {
+float:left;
+width: 100%;
+margin: auto;
+margin-top: -10px;
+}
+
+#logo {
+	margin: 15px 0px 0px 20px;
+}
+
+/* page title */
+.top_image {margin-top:0; width:100%}
+p strong {
+	font-size: 12px;
+	margin-bottom: 9px;
+}
+.breadcrumb { margin: 0px 0 10px 0; font-size: 10px; }
+
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+.container_about-us, .container_services, .container_design {
+float:left;
+width: 100%;
+margin: auto;
+margin-top: -10px;
+}	
+.top_image {
+margin-top: 0;
+width: 100%;
+}
+.site_wrapper {
+	width: 100%;
+	margin: 0 auto;
+}
+.boxed_wrapper {
+	width: 100%;
+}
+.container_full {
+	width: 100%;
+}
+.container {
+	width: 95%;
+}
+
+.content_left {
+	float: left;
+	width: 100%;
+	padding: 30px 0px 0px 0px;
+}
+.content_fullwidth {
+	float: left;
+	width: 100%;
+	padding: 30px 0px 30px 0px;
+}
+/* top section */
+.top_section {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	z-index: 998;
+}
+
+.content_right {
+	float: left;
+	width: 100%;
+	padding: 30px 0px 30px 0px;
+}
+
+
+#logo {
+	margin: 15px 0px 0px 20px;
+}
+.site_logo {
+	margin: 27px 0px 0px 0px;
+}
+.footer {
+	background: #29292b;
+}
+.bottom_gray_bg {
+	margin: -20px 0px 0px 0px;
+}
+
+/* columns */
+.one_half, .one_third, .one_fourth, .two_third, .three_fourth, .one_fifth, .one_third2, .one_fourth2 {
+	position: relative;
+	margin-right: 3%;
+	float: left;
+}
+.one_full, .one_third2, .one_fourth2 {
+	width: 100%;
+}
+.one_half {
+	width: 100%;
+	margin-bottom: -20px;
+}
+.one_third {
+	width: 100%; margin-bottom: 20px;
+}
+.one_fourth {
+	width: 100%;
+}
+.one_fifth, .icon_aboutus {
+	width: 13%;
+}
+.two_third {
+	width: 73%;
+}
+.three_fourth {
+	width: 100%;
+}
+.last {
+	margin-right: 0 !important;
+	clear: right;
+	margin-bottom: 0px;
+}
+.height_contact { height: 150px }
+.column2 { width: 100%; position: relative; float: left; margin-left:0; height: 150px; }
+.height_more { height: 100px }
+
+/*-- Footer --*/
+.footer{float:left;padding:10px;margin:0;width:96%;background-color:#3c3c3c;color:#bababa;font-size:11px;}
+.marbottom20 {margin-bottom: 20px}
+}
+
+@media only screen and (max-width: 479px){
+.top_image {
+margin-top: 0;
+width: 100%;
+}
+.site_wrapper {
+	width: 100%;
+	margin: 0 auto;
+}
+.boxed_wrapper {
+	width: 100%;
+}
+.container_full {
+	width: 100%;
+}
+.container {
+	width: 95%;
+}
+
+.content_fullwidth, .container_design, .container_services {
+	float: left;
+	width: 90%;
+	padding: 15px;
+}
+
+/* top section */
+.top_section {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	z-index: 998;
+}
+
+#logo {
+	margin: 15px 0 0 20px;
+}
+.site_logo {
+	margin: 5px 0px 0px 0px;
+}
+
+.top_contact_info {
+	display: none;
+}
+
+.full_img_box img {
+	width: 96%;
+}
+.footer {
+	background: #29292b;
+}
+
+/* columns */
+.one_half, .one_third, .one_fourth, .two_third, .three_fourth, .one_fifth, .one_third2, .one_fourth2 {
+	position: relative;
+	margin-right: 3%;
+	float: left;
+}
+.one_full {
+	width: 100%;
+}
+.one_third2, .one_fourth2 {width: 93%}
+
+.one_half, .two_third, .three_fourth {
+	width: 100%; 
+}
+.one_third {
+	width: 100%; margin-bottom: 20px;
+}
+.one_fourth {
+	width: 100%;
+}
+.one_fifth, .icon_aboutus {
+	width: 20%;
+}
+.last {
+	margin-right: 0 !important;
+	clear: right;
+	margin-bottom: 0px;
+}
+.height_contact { height: 150px }
+.column2 { width: 270px; position: relative; float: left; margin-left: 0; height:150px; }
+.height_more { height: 100px; width: 270px }
+.acenter { text-align: center; font-size: 11px; line-height: 12px; font-weight: normal; margin-top:5px; margin-bottom: 20px}
+
+/*-- Footer --*/
+.footer{float:left;padding:10px;margin:0;width:94%;background-color:#3c3c3c;color:#bababa;font-size:11px;}
+.marbottom20 {margin-bottom: 20px}
+.breadcrumb { margin: 0px 0 10px 0; font-size: 10px; }
+ul.thumb-grid li{ width:90%;margin: 1%;  }
+}
+
+

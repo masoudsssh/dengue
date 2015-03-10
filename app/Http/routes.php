@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function(){
+					return Redirect::to('/index'); 
+				});
+Route::get('/index', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+
+Route::post('upload', array('as'=>'FileUpload', 'uses'=>'HelperController@uploadFile' ));
 
 Route::get('map', function(){
 								return View::make('map'); 

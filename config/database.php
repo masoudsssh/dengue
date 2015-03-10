@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'dengueServer',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,10 +54,22 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => '127.0.0.1',
 			'database'  => 'dengue',
 			'username'  => 'root',
 			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
+		'dengueServer' => [
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'dengue',
+			'username'  => 'root',
+			'password'  => 'denguekbd',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
