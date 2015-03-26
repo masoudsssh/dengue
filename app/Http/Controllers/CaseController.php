@@ -38,7 +38,7 @@ class CaseController extends Controller {
 				$input['filePath'] = $files[0];
 				$input['fileNewName'] = $files[1];
 			endforeach;
-			CaseItem::firstOrCreate(array('user_id'=>1, 'title'=>$request->title, 'description'=>$request->description, 'image'=>'/uploadedFiles/'.$input['filePath'] ));
+			CaseItem::firstOrCreate(array('user_id'=>1, 'title'=>$request->title, 'description'=>$request->description, 'image'=>'/uploadedFiles/'.$input['filePath'], 'category'=>$request->category ));
 			session()->flush();
 			$msg = array('message'=>'The case is created successfully.', 'status'=>200);
         	return json_encode($msg);

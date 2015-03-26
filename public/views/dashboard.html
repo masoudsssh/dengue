@@ -1,0 +1,120 @@
+<div class="one bg_white">
+	<div class="one_contain">
+		Dashboard
+		<div class="dialog-box">
+			<input name="yourstatus" type="text" id="status" class="input_noborder"  placeholder="Share what's new...">
+		</div>
+		<div> 
+			<a class="btn green-haze btn-circle btn-sm" ng-click="open()" href="" data-toggle="dropdown" dropdown-menu-hover="" data-close-others="true" aria-expanded="true">
+				<i class="fa fa-pencil-square-o fa-2x"></i>report a case
+			</a>
+
+			<a class="btn green-haze btn-circle btn-sm" ng-click="openNewsModal()" href="" data-toggle="dropdown" dropdown-menu-hover="" data-close-others="true" aria-expanded="true">
+				<i class="fa fa-pencil-square-o fa-2x"></i>create a news
+			</a>
+
+			<i class="fa fa-share-square-o fa-2x"></i>share your dengue story
+			<i class="fa fa-file-image-o fa-2x"></i>upload media
+		</div>
+	</div> <!-- end one_contain -->
+</div> <!-- end one -->
+
+
+<!-- upload story -->
+<div class="one bg_white" ng-repeat="case in cases">
+	<div class="one_contain">
+		<div class="three_fourth">
+			<div class="one_sixth">
+				<img src="/images/profile-photo.png" class="circle_user">
+			</div>
+			<div class="three_fourth">
+				<span class="boldtext">
+					<span class="text_black">micheal caine</span>
+					<br/>
+					share publicly - <span style="font-size: 12px;">{{case.created_at}}</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="one_fourth last" ng-if="case.category==1">
+			<div class="bg_red">NEWS<br/>from the Internet</div>
+			<div class="media"><img src="/images/logo-thesundaily.png" /></div>
+		</div>
+		<div class="one_fourth last" ng-if="case.category==2">
+			<div class="bg_blue">user dengue story</div>
+		</div>
+		<div class="one_fourth last" ng-if="case.category==3">
+			<div class="bg_green">user upload photo</div>
+		</div>
+
+		<div class="one">
+			<p>{{case.title}}</p>
+			<p>{{case.description}}</p>
+			<p><img ng-src="{{case.image}}" ng-show="case.image" class="img_outline imgsize" /></p>
+			
+			<div class="fb-comments" data-href="http://localhost:8001/index/{{case.title}}" data-numposts="3" data-colorscheme="light"></div>
+
+		</div> 
+	</div>
+	<!-- end one_contain -->
+</div> 
+<!-- end upload story -->
+
+
+
+<script type="text/ng-template" id="/newCaseReportModal.html">
+	<div class="modal-header"> 
+		<h3 class="modal-title">Report a dengue case</h3>
+	</div>
+
+	<div class="alert alert-danger alert-dismissable" id="createCaseAlert" style="display:none" >
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+		
+		{{attachment}}
+	</div>
+
+
+	<div>
+		<div>
+			<div class="modal-body form-horizontal" id="createCase">
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="title">Title</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="title" name="title" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="title" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="description">Description</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<textarea id="description" name="description" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="description"></textarea>
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="control-label col-sm-3" style="text-align:right">Attachment</label>
+					<div class="col-sm-9">
+								<input type="file" nv-file-select uploader="uploader" name="file" /><br/>
+							</div>
+						</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="submitCase(); uploader.uploadAll()" data-loading-text="submitting">submit</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+
+		</div>
+	</div>
+</script>
+				

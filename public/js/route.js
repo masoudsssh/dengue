@@ -5,6 +5,21 @@
 		.when('/index' , {
 			  controller:  'caseController',
 			  templateUrl: '/views/case.html'
+		})
+
+		.when('/dashboard' , {
+			  controller:  'caseController',
+			  templateUrl: '/views/dashboard.html'
+		})
+
+		.when('/profile' , {
+			  controller:  'profileController',
+			  templateUrl: '/views/profile.html'
+		})
+
+		.when('/logout' , {
+			  controller:  'logoutController',
+			  templateUrl: '/views/case.html'
 		});
 
 		// .otherwise({

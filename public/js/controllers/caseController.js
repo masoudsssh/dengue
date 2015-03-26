@@ -2,7 +2,7 @@
 
 	// create the controller and inject Angular's $scope
 	dengueApp.controller('caseController', function($scope, $http, $modal, $rootScope, caseModel) {	
-		var addthis_config = {"data_track_addressbar":true};
+		// var addthis_config = {"data_track_addressbar":true};
 		caseModel.getCases()
 		.success(function (data) {
 			$scope.cases = data ;
@@ -23,6 +23,33 @@
 			var modalInstance = $modal.open({
 				templateUrl: '/newCaseReportModal.html',
 				controller: 'storeCaseReportController',
+				size: size,
+				resolve: {
+					params: function () {
+						return '';//$scope.params;
+					}
+				}
+			});
+
+			modalInstance.result.then(function (selectedItem) {
+				caseModel.getCases()
+				.success(function (data) {
+					$scope.cases = data ;
+				})
+				.error(function (error) {
+			        //  $scope.status = 'Unable to load customer data: ' + error.message;
+			    });
+				$rootScope.$$phase || $rootScope.$apply();
+			}, function () {
+				//$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
+
+		$scope.openNewsModal = function (size) {
+
+			var modalInstance = $modal.open({
+				templateUrl: '/newsModal.html',
+				controller: 'storeNewsController',
 				size: size,
 				resolve: {
 					params: function () {
@@ -128,6 +155,39 @@
 			var newCase = {
 				description: $scope.description,
 				title: $scope.title,
+				category: 2
+			};
+			caseModel.insertCase( newCase )
+			.success(function () {
+				$modalInstance.close(newCase);
+			}).
+			error(function(error) {
+				$scope.status = 'Unable to insert ticket: ' + error.message;
+			});
+		};
+	});
+
+	dengueApp.controller('storeNewsController', function($scope, $http, $modalInstance, FileUploader, caseModel) {	
+		$scope.cancel = function () {
+			$modalInstance.dismiss('cancel');
+		};
+
+		var uploader = $scope.uploader = new FileUploader({
+            url: '/upload'
+        });
+
+        $scope.submitNews = function () {
+			if( $('#createNews input[type="file"]').val()==""){
+				$('#createNewsAlert').show();
+				$scope.attachment = 'The attachment field is required.';
+			}
+		};
+
+        uploader.onCompleteAll = function(){
+			var newCase = {
+				description: $scope.description,
+				title: $scope.title,
+				category: 1
 			};
 			caseModel.insertCase( newCase )
 			.success(function () {

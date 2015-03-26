@@ -5,10 +5,14 @@
 		</div>
 		<div> 
 			<a class="btn green-haze btn-circle btn-sm" ng-click="open()" href="" data-toggle="dropdown" dropdown-menu-hover="" data-close-others="true" aria-expanded="true">
-				<i class="fa fa-pencil-square-o fa-2x"></i>report a case
+				<i class="fa fa-share-square-o fa-2x"></i>report a case
 			</a>
+
+			<a class="btn green-haze btn-circle btn-sm" ng-click="openNewsModal()" href="" data-toggle="dropdown" dropdown-menu-hover="" data-close-others="true" aria-expanded="true">
+				<i class="fa fa-share-square-o fa-2x"></i>create a news
+			</a>
+
 			<i class="fa fa-share-square-o fa-2x"></i>share your dengue story
-			<i class="fa fa-file-image-o fa-2x"></i>upload media
 		</div>
 	</div> <!-- end one_contain -->
 </div> <!-- end one -->
@@ -19,7 +23,7 @@
 	<div class="one_contain">
 		<div class="three_fourth">
 			<div class="one_sixth">
-				<img src="/images/profile-photo.jpg" class="circle_user">
+				<img src="/images/profile-photo.png" class="circle_user">
 			</div>
 			<div class="three_fourth">
 				<span class="boldtext">
@@ -112,4 +116,186 @@
 	</div>
 </script>
 
+
+
+
+<script type="text/ng-template" id="/newsModal.html">
+	<div class="modal-header"> 
+		<h3 class="modal-title">Create a news</h3>
+	</div>
+
+	<div class="alert alert-danger alert-dismissable" id="createNewsAlert" style="display:none" >
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+		
+		{{attachment}}
+	</div>
+
+
+	<div>
+		<div>
+			<div class="modal-body form-horizontal" id="createNews">
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="title">Title</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="title" name="title" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="title" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="description">Description</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<textarea id="description" name="description" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="description"></textarea>
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="control-label col-sm-3" style="text-align:right">Attachment</label>
+					<div class="col-sm-9">
+						<input type="file" nv-file-select uploader="uploader" name="file" /><br/>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="submitNews(); uploader.uploadAll()" data-loading-text="submitting">submit</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+
+		</div>
+	</div>
+</script>
+
+
+
+<!-- Modal -->
+<script type="text/ng-template" id="/loginModal.html">
+	<div class="modal-header"> 
+		<h3 class="modal-title">Login</h3>
+	</div>
+
+	<div class="alert alert-danger alert-dismissable" id="loginAlert" style="display:none" >
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+	</div>
+
+
+	<div>
+		<div>
+			<div class="modal-body form-horizontal" id="login">
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="username">Username</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="username" name="username" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="username" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="Password">Password</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="Password" id="Password" name="Password" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="login()" data-loading-text="submitting">Login</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+
+		</div>
+	</div>
+</script>
+
+
+
+
+
+
+
+<!-- Modal -->
+<script type="text/ng-template" id="/signupModal.html">
+	<div class="modal-header"> 
+		<h3 class="modal-title">Signup</h3>
+	</div>
+
+	<div class="alert alert-danger alert-dismissable" id="signupAlert" style="display:none" >
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button> 
+	</div>
+
+
+	<div>
+		<div>
+			<div class="modal-body form-horizontal" id="signup">
+				<div class="form-group">
+					<label class="col-sm-4 control-label" style="text-align:right" for="name">Name</label>
+					<div class="col-sm-8">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="name" name="name" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="name" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-4 control-label" style="text-align:right" for="username">Email</label>
+					<div class="col-sm-8">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="username" name="username" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="username" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-4 control-label" style="text-align:right" for="Password">Password</label>
+					<div class="col-sm-8">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="Password" id="password" name="password" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-4 control-label" style="text-align:right" for="Password">Password Confirmation</label>
+					<div class="col-sm-8">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="Password" id="password_confirmation" name="password_confirmation" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password_confirmation" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="signup()" data-loading-text="submitting">Signup</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+
+		</div>
+	</div>
+</script>
 				

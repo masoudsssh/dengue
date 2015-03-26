@@ -27,8 +27,27 @@
     		<div id="logo"><a href="/"><img src="images/logo-kbd.png" alt="Komuniti Bebas Denggi" border="0"></a>
             </div><!-- end logo -->
 			<div class="one_fourth2 span40"><input name="yourname" class="input_bg" type="text" id="name" placeholder="search bebas denggi"></div>
-			<div class="one_fourth span30"><img src="images/profile-photo.jpg" class="circle"><span class="boldtext">John Doe</span></div>
-			<div class="one_last span40"><a href="#"><i class="fa fa-cog fa-2x"></i></a><span class="text_large"> | </span><a href="#"><i class="fa fa-sign-out fa-2x"></i></a></div>
+			
+			<div class="one_fourth span30" id="user-info" style="display:none">
+				<img src="images/profile-photo.png" class="circle">
+				<a href="/profile"><span class="boldtext" id="user-name">your name</span></a>
+			</div>
+
+			<div class="one_last span40">
+				<!-- <a href="#"><i class="fa fa-cog fa-2x"></i></a> -->
+				<span style="margin-right: 12px;" ng-controller="commonController">
+					<a href="/logout" class="btn green-haze btn-circle btn-sm header-link-logout" style="text-decoration:none !important; display:none" >
+						Logout
+					</a>
+
+					<a class="btn green-haze btn-circle btn-sm header-link" ng-click="openLoginModal()" style="text-decoration:none !important" >
+						Log In
+					</a>
+					<span class="header-link"> | </span>
+					<a class="btn green-haze btn-circle btn-sm header-link" ng-click="openSignupModal()" style="text-decoration:none !important">Sign up</a>
+				</span>
+				<!-- <a href="#"><i class="fa fa-sign-out fa-2x"></i></a> -->
+			</div>
          </div><!-- end top section -->
 <div class="one bg_lightgrey">
 <div class="container">
@@ -36,5 +55,9 @@
 <div class="bg_lightred col_height"><span class="text_big">100</span> <span class="text_white">cases in <a href="#" class="white">Subang Jaya</a></span>
 <span class="one_last"><a href="#" class="white"><i class="fa fa-cog icon-white"></i>customize your alert</a></span></div>
 </div> <!-- end container -->
+
+
+
+
 
 

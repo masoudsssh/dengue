@@ -29,6 +29,12 @@ Route::resource('case', 'CaseController', ['except' => ['edit', 'create']]);
 
 Route::resource('hotspot', 'HotspotController', ['except' => ['edit', 'create']]);
 
+
+Route::post('login', array('as'=>'login', 'uses'=>'UserController@login' ));
+Route::post('signup', array('as'=>'signup', 'uses'=>'UserController@signup' ));
+Route::get('logout', array('as'=>'logout', 'uses'=>'UserController@logout' ));
+Route::put('update-user', array('as'=>'updateUser', 'uses'=>'UserController@updateUser' ));
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

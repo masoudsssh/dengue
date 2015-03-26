@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-gb" class="no-js" ng-app="dengueApp">
+<html lang="en" class="no-js" ng-app="dengueApp">
 
 <?php
 $headerstr = "Komuniti Bebas Denggi";
@@ -22,9 +22,6 @@ $descstr = "Komuniti Bebas Denggi";
 	@include('patials.right')
 
 </div> <!-- end container_full -->
-
-
-
 
 
 @include('patials.footer')
