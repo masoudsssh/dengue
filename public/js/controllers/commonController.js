@@ -50,6 +50,42 @@
 
 	});
 
+	dengueApp.controller('faqController', function($scope, $http) {	
+		$scope.oneAtATime = true;
+
+		$scope.groups = [
+		{
+			title: 'Is account registration required?',
+			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
+		},
+		{
+			title: 'Is this the latest version of an item?',
+			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
+		},
+		{
+			title: 'Is account registration required?',
+			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
+		},
+		{
+			title: 'Is this the latest version of an item?',
+			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
+		},
+		{
+			title: 'Is account registration required?',
+			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
+		},
+		{
+			title: 'Is this the latest version of an item?',
+			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
+		}
+		];
+
+		$scope.status = {
+			isFirstOpen: true,
+			isFirstDisabled: false
+		};
+	});
+
 
 	dengueApp.controller('loginController', function($scope, $http, $modalInstance, userModel) {	
 		$scope.cancel = function () {

@@ -25,10 +25,16 @@
 	<div class="one">
 		<ul class="text_right text_bold">
 			<li><a href="#" class="grey">filter feeds</a></li>
-			<li><a href="#" class="red">news from the internet</a></li>
-			<li><a href="#" class="blue">case reported by user</a></li>
-			<li><a href="#" class="orange">user dengue story</a></li>
-			<li><a href="#" class="green">user upload photo</a></li>
-			<li><a href="#" class="purple">news from social media</a></li>
-		</div>
+			<li><a href="/index" class="green">All</a></li>
+			<li><a href="/cases-by-filter/1" class="red">news from the internet</a></li>
+			<li><a href="/cases-by-filter/2" class="blue">user dengue story</a></li>
+			<li><a href="/cases-by-filter/3" class="green">user upload photo</a></li>
+			<li><a href="/cases-by-filter/4" class="orange">case reported by user</a></li>
+			<!-- <li><a href="#" class="purple">news from social media</a></li> -->
+		</ul>
+	</div>
+
+	<div class="one">
+		<a class="pull-right" href="/faq">FAQ</a>
+	</div>
 </div> <!-- end side -->

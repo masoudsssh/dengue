@@ -8,9 +8,9 @@
             return $http.get(urlBase);
         };
 
-        // caseModel.getCase = function(id){ 
-        //     return $http.get(urlBase+'/' + id + '?type=true');
-        // };
+        caseModel.getCasesByfilter = function(category){ 
+            return $http.get('/case-filter-by/' + category );
+        };
 
         caseModel.insertCase = function (newCase) {
             return $http.post(urlBase, newCase);

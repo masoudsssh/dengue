@@ -198,3 +198,68 @@
 			});
 		};
 	});
+
+	dengueApp.controller('casesByFilterController', function($scope, $http, $modal, $routeParams, $rootScope, caseModel) {	
+		var category = $routeParams.category;
+		caseModel.getCasesByfilter(category)
+		.success(function (data) {
+			$scope.cases = data ;
+			$rootScope.$$phase || $rootScope.$apply();
+		})
+		.error(function (error) {
+		    //  $scope.status = 'Unable to load customer data: ' + error.message;
+		});
+
+		 $scope.open = function (size) {
+			var modalInstance = $modal.open({
+				templateUrl: '/newCaseReportModal.html',
+				controller: 'storeCaseReportController',
+				size: size,
+				resolve: {
+					params: function () {
+						return '';//$scope.params;
+					}
+				}
+			});
+
+			modalInstance.result.then(function (selectedItem) {
+				caseModel.getCases()
+				.success(function (data) {
+					$scope.cases = data ;
+				})
+				.error(function (error) {
+			        //  $scope.status = 'Unable to load customer data: ' + error.message;
+			    });
+				$rootScope.$$phase || $rootScope.$apply();
+			}, function () {
+				//$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
+
+		$scope.openNewsModal = function (size) {
+
+			var modalInstance = $modal.open({
+				templateUrl: '/newsModal.html',
+				controller: 'storeNewsController',
+				size: size,
+				resolve: {
+					params: function () {
+						return '';//$scope.params;
+					}
+				}
+			});
+
+			modalInstance.result.then(function (selectedItem) {
+				caseModel.getCases()
+				.success(function (data) {
+					$scope.cases = data ;
+				})
+				.error(function (error) {
+			        //  $scope.status = 'Unable to load customer data: ' + error.message;
+			    });
+				$rootScope.$$phase || $rootScope.$apply();
+			}, function () {
+				//$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
+	});

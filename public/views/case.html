@@ -44,8 +44,22 @@
 		<div class="one_fourth last" ng-if="case.category==3">
 			<div class="bg_green">user upload photo</div>
 		</div>
+		<div class="one_fourth last" ng-if="case.category==4">
+			<div class="bg_blue" style="background: orange; width: 144px;">
+				case reported by user
+			</div>
+		</div>
 
 		<div class="one">
+			<!-- AddThis Button BEGIN -->
+			<div data-addthis-toolbox data-url="" id="bp-{{case.id}}" 
+			class="addthis_toolbox addthis_default_style addthis_16x16_style">
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_google_plusone_share"></a>
+				<a class="addthis_button_email"></a>
+			</div>
+			<!-- AddThis Button END -->   
 			<p>{{case.title}}</p>
 			<p>{{case.description}}</p>
 			<p><img ng-src="{{case.image}}" ng-show="case.image" class="img_outline imgsize" /></p>

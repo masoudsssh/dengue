@@ -1,0 +1,12 @@
+<div class="one" ng-controller="faqController">
+<h3 style="padding: 15px;">FAQ</h3>
+  <accordion close-others="oneAtATime">
+    
+    <accordion-group ng-repeat="group in groups">
+      <accordion-heading>
+        {{group.title}} 
+      </accordion-heading>
+      {{group.content}} 
+    </accordion-group>
+  </accordion>
+</div>

@@ -7,6 +7,16 @@
 			  templateUrl: '/views/case.html'
 		})
 
+		.when('/faq' , {
+			  controller:  'faqController',
+			  templateUrl: '/views/faq.html'
+		})
+
+		.when('/cases-by-filter/:category' , {
+			  controller:  'casesByFilterController',
+			  templateUrl: '/views/case.html'
+		})
+
 		.when('/dashboard' , {
 			  controller:  'caseController',
 			  templateUrl: '/views/dashboard.html'
