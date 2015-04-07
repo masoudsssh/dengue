@@ -1,6 +1,6 @@
 <!-- upload story -->
 <div class="one bg_white">
-	<div class="one_contain" style="padding: 30px;">
+	<div class="one_contain" style="padding: 30px;" id="updateProfile">
 
 		<div class="one">
 
@@ -16,60 +16,73 @@
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button> 
 			</div>
 
+
 			<div class="form-group">
-					<label class="col-sm-4 control-label" style="text-align:right" for="name">Name</label>
-					<div class="col-sm-8">
-						<div class="input-group" style="width: 100%;" >
-							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
-								<input type="text" id="name" name="name" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="name" />
-							</span>
-						</div>
+				<label class="col-sm-4 control-label" style="text-align:right" for="name">Name</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%;" >
+						<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+							<input type="text" id="name" name="name" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="name" />
+						</span>
 					</div>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" style="text-align:right" for="username">Email</label>
-					<div class="col-sm-8">
-						<div class="input-group" style="width: 100%;" >
-							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
-								<input type="text" id="username" name="username" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="username" />
-							</span>
-						</div>
+
+			<div class="form-group" style="margin-bottom: 100px;">
+				<label class="col-sm-4 control-label" style="text-align:right">Picture</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%;" >
+						<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+							<input type="file" nv-file-select uploader="uploader" name="file" />
+						</span>
 					</div>
 				</div>
+			</div>
 
-
-				<div class="form-group">
-					<label class="col-sm-4 control-label" style="text-align:right" for="Password">Password</label>
-					<div class="col-sm-8">
-						<div class="input-group" style="width: 100%;" >
-							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
-								<input type="Password" id="password" name="password" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password" />
-							</span>
-						</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label" style="text-align:right" for="username">Email</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%;" >
+						<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+							<input type="text" id="username" name="username" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="username" />
+						</span>
 					</div>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" style="text-align:right" for="Password">Password Confirmation</label>
-					<div class="col-sm-8">
-						<div class="input-group" style="width: 100%;" >
-							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
-								<input type="Password" id="password_confirmation" name="password_confirmation" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password_confirmation" />
-							</span>
-						</div>
+
+			<div class="form-group">
+				<label class="col-sm-4 control-label" style="text-align:right" for="Password">Password</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%;" >
+						<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+							<input type="Password" id="password" name="password" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password" />
+						</span>
 					</div>
 				</div>
+			</div>
 
 
-				<div class="form-group">
-					<div class="col-sm-12">
-						<div class="pull-right">
-							<button class="btn btn-primary" ng-click="updateProfile()" data-loading-text="updating...">Save Changes</button>
-							<a class="btn btn-default" href="/index">Cancel</a>
-						</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label" style="text-align:right" for="password_confirmation">Password Confirmation</label>
+				<div class="col-sm-8">
+					<div class="input-group" style="width: 100%;" >
+						<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+							<input type="Password" id="password_confirmation" name="password_confirmation" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="password_confirmation" />
+						</span>
 					</div>
 				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="pull-right">
+						<button class="btn btn-primary" ng-click="updateProfile(); uploader.uploadAll()" data-loading-text="updating...">Save Changes</button>
+						<a class="btn btn-default" href="/index">Cancel</a>
+					</div>
+				</div>
+			</div>
 
 				
 		</div> 

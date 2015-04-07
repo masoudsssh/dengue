@@ -12,6 +12,7 @@
 		<div class="bg_red2"><h3 class="text_center text_white">view latest<br/>dengue hotspot</h3></div>
 		<!-- <img src="images/map.jpg" class="imgsize"> -->
 		<div id="map-canvas"></div>
+		<a href="/map" target="blamk" style="text-align:center; display:block">view full size</a>
 	</div>
 
 	<div class="one">

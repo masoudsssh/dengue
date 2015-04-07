@@ -26,8 +26,10 @@ Copyright &copy; 2015 Komuniti Bebas Denggi. All rights reserved.
 <script src="js/route.js"></script>
 <script src="js/models/case.js"></script>
 <script src="js/models/user.js"></script>
+<script src="js/models/faq.js"></script>
 <script src="js/controllers/commonController.js"></script>
 <script src="js/controllers/caseController.js"></script>
+<script src="js/controllers/faqController.js"></script>
 
 </body>
 </html>

@@ -19,7 +19,7 @@
 
 		.when('/dashboard' , {
 			  controller:  'caseController',
-			  templateUrl: '/views/dashboard.html'
+			  templateUrl: '/views/case.html'
 		})
 
 		.when('/profile' , {

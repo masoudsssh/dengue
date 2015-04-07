@@ -26,6 +26,7 @@ class UserController extends Controller {
 		if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
         	$user = User::where('email', $request->email)->first();
+        	Auth::loginUsingId($user->id);
             $msg = array('message'=>$user, 'status'=>200);
 		    return json_encode($msg);
         }else{
@@ -42,7 +43,7 @@ class UserController extends Controller {
 	public function signup(CreateUserRequest $request)
 	{
 		$password = bcrypt( $request->password );
-		User::firstOrCreate(array('name'=>$request->name, 'email'=>$request->email, 'password'=>$password));
+		User::firstOrCreate(array('name'=>$request->name, 'email'=>$request->email, 'password'=>$password, 'role_id'=>1 ));
 		$msg = array('message'=>'The user is registered successfully.', 'status'=>200);
 		return json_encode($msg);
 	}
@@ -56,14 +57,35 @@ class UserController extends Controller {
 	}
 
 	public function updateUser(UpdateUserRequest $request){
-		$password = bcrypt( $request->password );
-		$user = Auth::user();
-		$user->name = $request->name ;
-		$user->email = $request->email ;
-		$user->password = $password;
-		$user->save();
-		$msg = array('message'=>'The profile is updated successfully.', 'status'=>200);
-		return json_encode($msg);
+
+		if(session()->has('app.uploadedFile') && session('app.uploadedFile')!=""){
+		    foreach(session('app.uploadedFile') as $files):
+				$input['filePath'] = $files[0];
+				$input['fileNewName'] = $files[1];
+			endforeach;
+
+			session()->forget('app.uploadedFile');
+
+			$image = '/uploadedFiles/'.$input['filePath'];
+			$user = Auth::user();
+			//return Auth::user();
+			$user->name = $request->name ;
+			$user->email = $request->email ;
+			$user->password = bcrypt( $request->password );
+			$user->image = $image;
+			$user->save();
+		}else{
+			$user = Auth::user();
+			//return Auth::user()->id;
+			$user->name = $request->name ;
+			$user->email = $request->email ;
+			$user->password = bcrypt( $request->password );
+			$user->save();
+		}
+
+			$msg = array('message'=>'The profile is updated successfully.', 'user'=>$user, 'status'=>200);
+			return json_encode($msg);
+
 	}
 
 }

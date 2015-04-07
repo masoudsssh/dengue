@@ -16,7 +16,7 @@ return [
     'facebook_config' => [
         'app_id' => '444325462398227',
         'app_secret' => 'b6c6b21d501b4ac96efa28fc66d218a4',
-        'default_graph_version' => 'v2.2',
+        //'default_graph_version' => 'v2.2',
         //'enable_beta_mode' => true,
         //'http_client_handler' => 'guzzle',
     ],

@@ -24,12 +24,12 @@
 <div class="boxed_wrapper">
     <div class="container_full">
         <div class="one">
-    		<div id="logo"><a href="/"><img src="images/logo-kbd.png" alt="Komuniti Bebas Denggi" border="0"></a>
+    		<div id="logo"><a href="/index"><img src="images/logo-kbd.png" alt="Komuniti Bebas Denggi" border="0"></a>
             </div><!-- end logo -->
 			<div class="one_fourth2 span40"><input name="yourname" class="input_bg" type="text" id="name" placeholder="search bebas denggi"></div>
 			
 			<div class="one_fourth span30" id="user-info" style="display:none">
-				<img src="images/profile-photo.png" class="circle">
+				<img src="images/profile-photo.png" class="circle" id="profileImage">
 				<a href="/profile"><span class="boldtext" id="user-name">your name</span></a>
 			</div>
 

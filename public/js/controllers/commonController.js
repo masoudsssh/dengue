@@ -2,6 +2,12 @@
 
 	// create the controller and inject Angular's $scope
 	dengueApp.controller('commonController', function($scope, $http, $modal, $rootScope, $location) {	
+		if( $rootScope.role!=2 ){
+			$("#create-news").hide();
+		}else{
+			$("#create-news").show();
+		}
+		
 		$scope.openLoginModal = function (size) {
 			var modalInstance = $modal.open({
 				templateUrl: '/loginModal.html',
@@ -14,13 +20,27 @@
 				}
 			});
 
-			modalInstance.result.then(function (selectedItem) {
+			modalInstance.result.then(function (params) {
 				obj = $(".header-link").parent();
 				obj.find(".header-link").hide();
 				obj.find('.header-link-logout').show();
-				$("#user-info #user-name").html(selectedItem).show();
+				var param = params.split(',');
+
+				if( param[2]!="" ){
+					$('#profileImage').attr("src", param[2]);
+				}
+				$("#user-info #user-name").html(param[0]).show();
 				$("#user-info").show();
-				$location.path('/dashboard');
+				
+				$rootScope.role = param[1];
+
+				if( $rootScope.role!=2 ){
+					$("#create-news").hide();
+				}else{
+					$("#create-news").show();
+				}
+
+				$location.path('/index');
 				//$rootScope.$$phase || $rootScope.$apply();
 			}, function () {
 				//$log.info('Modal dismissed at: ' + new Date());
@@ -50,41 +70,6 @@
 
 	});
 
-	dengueApp.controller('faqController', function($scope, $http) {	
-		$scope.oneAtATime = true;
-
-		$scope.groups = [
-		{
-			title: 'Is account registration required?',
-			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
-		},
-		{
-			title: 'Is this the latest version of an item?',
-			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
-		},
-		{
-			title: 'Is account registration required?',
-			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
-		},
-		{
-			title: 'Is this the latest version of an item?',
-			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
-		},
-		{
-			title: 'Is account registration required?',
-			content: 'Account registration at KBD is only required if you will be selling or buying themes. This ensures a valid communication channel for all parties involved in any transactions. '
-		},
-		{
-			title: 'Is this the latest version of an item?',
-			content: 'Each item in KBD is maintained to its latest version. This ensures its smooth operation.'
-		}
-		];
-
-		$scope.status = {
-			isFirstOpen: true,
-			isFirstDisabled: false
-		};
-	});
 
 
 	dengueApp.controller('loginController', function($scope, $http, $modalInstance, userModel) {	
@@ -101,7 +86,7 @@
 			userModel.login( newCredential )
 			.success(function (data) {
 				if(data.status==200){
-					$modalInstance.close(data.message.name);
+					$modalInstance.close(data.message.name+","+data.message.role_id+","+data.message.image);
 				}else{
 					$('#loginAlert').html("<li>"+data.message+"</li>").show();
 				}
@@ -151,6 +136,7 @@
 			obj.find(".header-link").show();
 			obj.find('.header-link-logout').hide();
 			$("#user-info").hide();
+			$rootScope.role=0;
 			$location.path('/index');
 		}).
 		error(function(error) {
@@ -160,8 +146,42 @@
 	});
 
 
-	dengueApp.controller('profileController', function($scope, $http, $modal, $rootScope, $location, userModel) {	
+	dengueApp.controller('profileController', function($scope, $http, $modal, $rootScope, $location, FileUploader, userModel) {	
+		var uploader = $scope.uploader = new FileUploader({
+            url: '/upload'
+        });
+
 		$scope.updateProfile = function(){
+			if( $('#updateProfile input[type="file"]').val()==""){
+				var user = {
+					name: $scope.name,
+					email: $scope.username,
+					password: $scope.password,
+					password_confirmation: $scope.password_confirmation
+				};
+
+				userModel.updateUser( user )
+				.success(function (data) {
+					if(data.status==200){
+						$("#user-info #user-name").html($scope.name).show();
+						$('#profileAlert').hide();
+						$('#profileInfoAlert').html(data.message).show();
+					}
+				}).
+				error(function(error) {
+					msg = "";
+					$.each(error, function(idx, obj) {
+						msg += "<li>"+obj[0]+"</li>";
+					});
+					$('#profileInfoAlert').hide();
+					$('#profileAlert').html(msg).show();
+					$scope.status = 'Unable to update profile: ' + error.message;
+				});
+			}
+		}
+
+
+		uploader.onCompleteAll = function(){
 			var user = {
 				name: $scope.name,
 				email: $scope.username,
@@ -173,6 +193,8 @@
 			.success(function (data) {
 				if(data.status==200){
 					$("#user-info #user-name").html($scope.name).show();
+
+					$('#profileImage').attr("src", data.user.image);
 					$('#profileAlert').hide();
 					$('#profileInfoAlert').html(data.message).show();
 				}
@@ -187,4 +209,5 @@
 				$scope.status = 'Unable to update profile: ' + error.message;
 			});
 		}
+
 	});

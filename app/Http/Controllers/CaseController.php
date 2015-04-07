@@ -7,6 +7,8 @@ use App\Http\Requests\CreateCaseRequest;
 use App\Http\Requests\UpdateCaseRequest;
 use Illuminate\Http\Request;
 
+use Twitter;
+use Auth;
 /**
  * User: Masoud
  * Date: 2/17/15
@@ -38,7 +40,13 @@ class CaseController extends Controller {
 				$input['filePath'] = $files[0];
 				$input['fileNewName'] = $files[1];
 			endforeach;
+
+			session()->forget('app.uploadedFile');
+			
 			CaseItem::firstOrCreate(array('user_id'=>1, 'title'=>$request->title, 'description'=>$request->description, 'image'=>'/uploadedFiles/'.$input['filePath'], 'category'=>$request->category ));
+			if($request->category==1){
+				Twitter::postTweet(['status' => $request->description, 'format' => 'json']);
+			}
 			session()->flush();
 			$msg = array('message'=>'The case is created successfully.', 'status'=>200);
         	return json_encode($msg);

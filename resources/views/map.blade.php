@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <title>KBD | Latest dengue hotspot</title>
     <style>
       html, body, #map-canvas {
         height: 100%;
@@ -82,8 +82,8 @@
   </script>
   </head>
   <body style="background-color: #f5f5f5;">
-    <div class="well" style="margin-bottom: 0px;">
-      <h3>Using google map API to display bubble</h3>
+    <div class="well" style="margin-bottom: 0px; padding-left: 20px">
+      <h3>Latest dengue hotspot</h3>
     </div>
     <div id="map-canvas"></div>
   </body>

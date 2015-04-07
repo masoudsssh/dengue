@@ -5,12 +5,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateFileRequest;
 use Illuminate\Http\Request;
 
+use Auth; 
+
 class HelperController extends Controller {
 
     public function uploadFile(CreateFileRequest $request)
     {   
-        session()->flush();
+        $user = Auth::user();
+
+        if(session()->has('app.uploadedFile') ){
+            session()->forget('app.uploadedFile');
+        }
         session()->regenerate();
+
+        session()->push('app.user', $user );
         // if ( $request::hasFile('file') ) {
             $oldName = $request->file('file')->getClientOriginalName();
             $newFileName = str_random(10).'.'.$request->file('file')->getClientOriginalExtension();

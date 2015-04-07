@@ -2,7 +2,13 @@
 
 	// create the controller and inject Angular's $scope
 	dengueApp.controller('caseController', function($scope, $http, $modal, $rootScope, caseModel) {	
-		// var addthis_config = {"data_track_addressbar":true};
+		
+		if( $rootScope.role!=2 ){
+			$("#create-news").hide();
+		}else{
+			$("#create-news").show();
+		}
+
 		caseModel.getCases()
 		.success(function (data) {
 			$scope.cases = data ;
@@ -162,7 +168,7 @@
 				$modalInstance.close(newCase);
 			}).
 			error(function(error) {
-				$scope.status = 'Unable to insert ticket: ' + error.message;
+				$scope.status = 'Unable to insert case: ' + error.message;
 			});
 		};
 	});
@@ -200,6 +206,12 @@
 	});
 
 	dengueApp.controller('casesByFilterController', function($scope, $http, $modal, $routeParams, $rootScope, caseModel) {	
+		if( $rootScope.role!=2 ){
+			$("#create-news").hide();
+		}else{
+			$("#create-news").show();
+		}
+
 		var category = $routeParams.category;
 		caseModel.getCasesByfilter(category)
 		.success(function (data) {
