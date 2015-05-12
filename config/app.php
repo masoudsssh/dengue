@@ -136,6 +136,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Skovmand\Mailchimp\MailchimpServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */

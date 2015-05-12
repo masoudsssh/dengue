@@ -312,4 +312,65 @@
 		</div>
 	</div>
 </script>
+
+
+<script type="text/ng-template" id="/controlKitModal.html">
+	<div class="modal-header"> 
+		<h3 class="modal-title">Request a mosquito control kit</h3>
+	</div>
+
+	<div class="alert alert-danger alert-dismissable" id="createControlKitAlert" style="display:none" >
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+		
+	</div>
+
+
+	<div>
+		<div>
+			<div class="modal-body form-horizontal" id="createControlKit">
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="name">Name</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="name" name="name" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="name" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="email">Email</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<input type="text" id="email" name="email" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="email" />
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label" style="text-align:right" for="address">Address</label>
+					<div class="col-sm-9">
+						<div class="input-group" style="width: 100%;" >
+							<span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr; width: 100%;">
+								<textarea id="address" name="address" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" ng-model="address"></textarea>
+							</span>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="submitControlKitRequest()" data-loading-text="submitting">submit</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+
+		</div>
+	</div>
+</script>
 				

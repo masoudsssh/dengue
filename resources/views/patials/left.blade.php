@@ -36,6 +36,7 @@
 	</div>
 
 	<div class="one">
+		<a class="pull-right" href="/controlkit" id="controlkitLink" style="">Control Kit Requests</a> <br/>
 		<a class="pull-right" href="/faq">FAQ</a>
 	</div>
 </div> <!-- end side -->

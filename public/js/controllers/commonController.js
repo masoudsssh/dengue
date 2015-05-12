@@ -4,10 +4,12 @@
 	dengueApp.controller('commonController', function($scope, $http, $modal, $rootScope, $location) {	
 		if( $rootScope.role!=2 ){
 			$("#create-news").hide();
+			$("#controlkitLink").hide();
 		}else{
 			$("#create-news").show();
+			$("#controlkitLink").show();
 		}
-		
+
 		$scope.openLoginModal = function (size) {
 			var modalInstance = $modal.open({
 				templateUrl: '/loginModal.html',
@@ -36,8 +38,10 @@
 
 				if( $rootScope.role!=2 ){
 					$("#create-news").hide();
+					$("#controlkitLink").hide();
 				}else{
 					$("#create-news").show();
+					$("#controlkitLink").show();
 				}
 
 				$location.path('/index');
@@ -69,6 +73,7 @@
 
 
 	});
+
 
 
 

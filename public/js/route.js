@@ -22,6 +22,11 @@
 			  templateUrl: '/views/case.html'
 		})
 
+		.when('/controlkit' , {
+			  controller:  'controlkitController',
+			  templateUrl: '/views/controlkit.html'
+		})
+
 		.when('/profile' , {
 			  controller:  'profileController',
 			  templateUrl: '/views/profile.html'

@@ -5,8 +5,10 @@
 		
 		if( $rootScope.role!=2 ){
 			$("#create-news").hide();
+			$("#controlkitLink").hide();
 		}else{
 			$("#create-news").show();
+			$("#controlkitLink").show();
 		}
 
 		caseModel.getCases()

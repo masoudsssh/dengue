@@ -95,4 +95,34 @@ class HotspotController extends Controller {
         }
 	}
 
+
+	public function search(Request $request){
+
+		$hotspot = Hotspot::where('id', '!=', '0');
+		// return var_dump($request->all() );
+
+		if( $request->has('locality') and $request->locality ){
+			$hotspot->where('locality', 'LIKE', '%'.$request->locality.'%');
+		}
+
+		if( $request->has('city') and $request->city ){
+			$hotspot->where('city', $request->city);
+		}
+
+		if( $request->has('municipal') and $request->municipal ){
+			$hotspot->where('municipal', $request->municipal);
+		}
+
+		if( $request->has('street') and $request->street ){
+			$hotspot->where('street', $request->street);
+		}
+
+		
+
+		$hotspot = $hotspot->orderby('id', 'desc')->get();
+		return $hotspot;
+	}
+
+
+
 }

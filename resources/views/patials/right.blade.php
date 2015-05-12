@@ -1,7 +1,7 @@
 <div class="side last">
 	<div class="one">
-		<ul id="navlist">
-			<li><a href="#">request a mosquito control kit</a></li>
+		<ul id="navlist" ng-controller="controlkitController">
+			<li ng-click="openControlKitModal()"><a href="">request a mosquito control kit</a></li>
 			<li><a href="#">create dengue alert</a></li>
 			<li><a href="#">events & updates</a></li>
 		</ul>

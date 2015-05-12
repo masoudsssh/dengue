@@ -69,7 +69,7 @@ return [
 			'host'      => 'localhost',
 			'database'  => 'dengue',
 			'username'  => 'root',
-			'password'  => 'denguekbd',
+			'password'  => 'Fcr7/YhsL_KBUo',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

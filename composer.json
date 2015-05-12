@@ -8,7 +8,9 @@
 		"laravel/framework": "5.0.*",
 		"sammyk/laravel-facebook-sdk": "~2.0@dev",
         "facebook/php-sdk-v4": "~4.1.0@dev",
-        "thujohn/twitter": "~2.0"
+        "thujohn/twitter": "~2.0",
+        "guzzlehttp/guzzle": "~4.0",
+        "skovmand/mailchimp-laravel": "1.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

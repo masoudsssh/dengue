@@ -20,8 +20,8 @@ return [
 	],
 
 	'mandrill' => [
-		'secret' => '',
-	],
+		'secret' => 'b177ed54-f00a-4f85-962a-770cfbde6fc3',
+	],				
 
 	'ses' => [
 		'key' => '',

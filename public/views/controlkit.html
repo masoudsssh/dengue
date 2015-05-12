@@ -1,0 +1,30 @@
+<!-- upload story -->
+<div class="one bg_white">
+	<div class="one_contain" style="padding: 30px;" id="">
+
+		<div class="one">
+
+			<div class="modal-header" style=""> 
+				<h3 class="modal-title">Control Kit Requests</h3>
+			</div>
+
+			
+			<table class="table row-border hover">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Address</th>
+				</tr>
+
+				<tr ng-repeat="request in controlkitrequests" >
+					<td> {{ request.name }} </td>
+					<td> {{ request.email }} </td>
+					<td> {{ request.address }} </td>
+				</tr>
+			</table>
+
+		</div> 
+	</div>
+	<!-- end one_contain -->
+</div> 
+<!-- end upload story -->

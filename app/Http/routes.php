@@ -29,12 +29,17 @@ Route::resource('case', 'CaseController', ['except' => ['edit', 'create']]);
 
 Route::resource('hotspot', 'HotspotController', ['except' => ['edit', 'create']]);
 
+Route::post('hotspot', 'HotspotController@search');
+
 Route::resource('faq', 'FaqController', ['except' => ['edit', 'create']]);
+Route::resource('controlkit', 'ControlKitController', ['except' => ['edit', 'create']]);
 
 Route::post('login', array('as'=>'login', 'uses'=>'UserController@login' ));
 Route::post('signup', array('as'=>'signup', 'uses'=>'UserController@signup' ));
 Route::get('logout', array('as'=>'logout', 'uses'=>'UserController@logout' ));
 Route::put('update-user', array('as'=>'updateUser', 'uses'=>'UserController@updateUser' ));
+
+Route::post('newsletter', array('as'=>'newsletter', 'uses'=>'UserController@newsletter' ));
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

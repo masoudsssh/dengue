@@ -17,6 +17,8 @@ class CreateHotspotsTable extends Migration {
 			$table->increments('id');
 			$table->string('state', 45);
 			$table->string('city', 45);
+			$table->string('street', 45)->nullable();
+			$table->string('municipal', 45)->nullable();
 			$table->datetime('time')->nullable();
 			$table->string('locality', 45)->nullable();
 			$table->string('gps', 45)->nullable();
