@@ -51,8 +51,12 @@ class CaseController extends Controller {
 			$msg = array('message'=>'The case is created successfully.', 'status'=>200);
         	return json_encode($msg);
 		}else{
-		        $msg = array('message'=>'Something is wrong.', 'status'=>401);
-		        return json_encode($msg);
+		    CaseItem::firstOrCreate(array('user_id'=>1, 'title'=>$request->title, 'description'=>$request->description, 'category'=>$request->category ));
+			if($request->category==1){
+				Twitter::postTweet(['status' => $request->description, 'format' => 'json']);
+			}
+			$msg = array('message'=>'The case is created successfully.', 'status'=>200);
+        	return json_encode($msg);
 		}
 	}
 
