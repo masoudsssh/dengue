@@ -33,6 +33,7 @@ Route::post('hotspot', 'HotspotController@search');
 
 Route::resource('faq', 'FaqController', ['except' => ['edit', 'create']]);
 Route::resource('controlkit', 'ControlKitController', ['except' => ['edit', 'create']]);
+Route::resource('danguealert', 'DengueAlertController', ['except' => ['edit', 'create']]);
 
 Route::post('login', array('as'=>'login', 'uses'=>'UserController@login' ));
 Route::post('login/fb', 'UserController@fbLogin');

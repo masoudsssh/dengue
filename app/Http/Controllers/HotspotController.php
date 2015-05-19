@@ -22,7 +22,7 @@ class HotspotController extends Controller {
 	 */
 	public function index()
 	{
-		return Hotspot::all();
+		return Hotspot::with('hotspotMaster')->get();
 	}
 
 
