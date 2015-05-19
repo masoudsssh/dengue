@@ -35,6 +35,8 @@ Route::resource('faq', 'FaqController', ['except' => ['edit', 'create']]);
 Route::resource('controlkit', 'ControlKitController', ['except' => ['edit', 'create']]);
 
 Route::post('login', array('as'=>'login', 'uses'=>'UserController@login' ));
+Route::post('login/fb', 'UserController@fbLogin');
+
 Route::post('signup', array('as'=>'signup', 'uses'=>'UserController@signup' ));
 Route::get('logout', array('as'=>'logout', 'uses'=>'UserController@logout' ));
 Route::put('update-user', array('as'=>'updateUser', 'uses'=>'UserController@updateUser' ));
