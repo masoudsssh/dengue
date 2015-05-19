@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHotspotsTable extends Migration {
+class CreateHotspotMastersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,15 @@ class CreateHotspotsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('hotspots', function(Blueprint $table)
+		Schema::create('hotspot_masters', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('state', 45);
-			$table->string('week', 5);
+			$table->string('district', 45)->nullable();
+			$table->string('area', 45)->nullable();
+			$table->string('group_address', 45)->nullable();
 			$table->string('road_name', 45)->nullable();
-			$table->string('no_of_cases', 45)->nullable(); 
-			$table->datetime('start')->nullable();
-			$table->datetime('end')->nullable();
+			$table->string('gps_location', 45)->nullable();
 			$table->timestamps();
 		});
 	}
@@ -32,7 +32,7 @@ class CreateHotspotsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('hotspots');
+		Schema::drop('hotspot_masters');
 	}
 
 }

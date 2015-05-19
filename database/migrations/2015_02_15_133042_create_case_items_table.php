@@ -17,6 +17,7 @@ class CreateCaseItemsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->nullable();
 			$table->string('title', 60)->nullable();
+			$table->string('venue', 60)->nullable();
 			$table->text('description')->nullable();
 			$table->string('image', 45)->nullable();
 			$table->string('category', 45)->nullable();
