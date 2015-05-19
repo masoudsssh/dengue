@@ -36,10 +36,10 @@ class UserController extends Controller {
 	}
 
 
-	public function fbLogin(){
-		if( Input::has('email') ){
-	        $user = User::firstOrCreate(array('email'=>Input::get('email')));
-	        $input = array_only(Input::all(), $user->getAllColumnsNames() );
+	public function fbLogin(Request $request){
+		if( Request::has('email') ){
+	        $user = User::firstOrCreate(array('email'=>$request->email ) );
+	        $input = array_only($request->all(), $user->getAllColumnsNames() );
 	        $user->update($input);
 	        Auth::loginUsingId($user->id);
 	        $msg = array('message'=>$user, 'status'=>200);
