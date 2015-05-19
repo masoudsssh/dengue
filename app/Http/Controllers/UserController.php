@@ -37,7 +37,7 @@ class UserController extends Controller {
 
 
 	public function fbLogin(Request $request){
-		if( Request::has('email') ){
+		if( $request->has('email') ){
 	        $user = User::firstOrCreate(array('email'=>$request->email ) );
 	        $input = array_only($request->all(), $user->getAllColumnsNames() );
 	        $user->update($input);
