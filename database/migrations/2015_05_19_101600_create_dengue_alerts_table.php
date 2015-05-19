@@ -15,6 +15,7 @@ class CreateDengueAlertsTable extends Migration {
 		Schema::create('dengue_alerts', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id')->nullable();
 			$table->string('area', 45)->nullable();
 			$table->string('road_name', 75)->nullable();
 			$table->timestamps();

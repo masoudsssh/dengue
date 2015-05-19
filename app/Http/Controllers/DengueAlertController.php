@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\DengueAlert;
+use Auth;
 use App\Http\Requests\CreateDangueAlertRequest;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,11 @@ class DengueAlertController extends Controller {
 	public function index()
 	{
 		//
-		return DengueAlert::orderBy('id','desc')->get();
+		if(!Auth::check() ){
+			return 'wrong parameter';
+		}else{
+			return DengueAlert::where('user_id', Auth::user()->id )->orderBy('id','desc')->get();
+		}
 	}
 
 	/**
@@ -37,7 +42,7 @@ class DengueAlertController extends Controller {
 	 */
 	public function store(CreateDangueAlertRequest $request)
 	{
-		if( $request->has('area') ){
+		if( $request->has('area') and $request->has('user_id') ){
 			$data = $request->all();
 
 	       DengueAlert::insert($data);
