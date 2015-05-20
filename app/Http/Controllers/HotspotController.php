@@ -22,7 +22,7 @@ class HotspotController extends Controller {
 	 */
 	public function index()
 	{
-		return Hotspot::with('hotspotMaster')->get();
+		return Hotspot::with('hotspotMaster')->groupBy('road_name')->take(300)->get();
 	}
 
 
