@@ -39,8 +39,7 @@ class UserController extends Controller {
 	public function fbLogin(Request $request){
 		if( $request->has('email') ){
 	        $user = User::firstOrCreate(array('email'=>$request->email ) );
-	        $input['first_name'] = $request->first_name;
-	        $input['last_name'] = $request->last_name;
+	        $input['name'] = $request->name;
 	        $user->update($input);
 	        Auth::loginUsingId($user->id);
 	        $msg = array('message'=>$user, 'status'=>200);
