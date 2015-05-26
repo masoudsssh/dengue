@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Hotspot;
+use App\HotspotMaster;
 use App\Http\Requests\CreateHotspotRequest;
 use App\Http\Requests\UpdateHotspotRequest;
 
@@ -121,6 +122,11 @@ class HotspotController extends Controller {
 
 		$hotspot = $hotspot->orderby('id', 'desc')->get();
 		return $hotspot;
+	}
+
+
+	public function displayAllHotspotMaster(){
+		return HotspotMaster::get();
 	}
 
 

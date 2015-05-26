@@ -30,6 +30,9 @@ Route::resource('case', 'CaseController', ['except' => ['edit', 'create']]);
 Route::resource('hotspot', 'HotspotController', ['except' => ['edit', 'create']]);
 
 Route::post('hotspot', 'HotspotController@search');
+Route::get('hotspotmaster', 'HotspotController@displayAllHotspotMaster');
+
+
 
 Route::resource('faq', 'FaqController', ['except' => ['edit', 'create']]);
 Route::resource('controlkit', 'ControlKitController', ['except' => ['edit', 'create']]);
