@@ -58,8 +58,9 @@ class UserController extends Controller {
 	public function signup(CreateUserRequest $request)
 	{
 		$password = bcrypt( $request->password );
-		User::firstOrCreate(array('name'=>$request->name, 'email'=>$request->email, 'password'=>$password, 'role_id'=>1 ));
-		$msg = array('message'=>'The user is registered successfully.', 'status'=>200);
+		$user = User::firstOrCreate(array('name'=>$request->name, 'email'=>$request->email, 'password'=>$password, 'role_id'=>1 ));
+		Auth::loginUsingId($user->id);
+		$msg = array('message'=>$user, 'status'=>200);
 		return json_encode($msg);
 	}
 

@@ -99,23 +99,18 @@ class HotspotController extends Controller {
 
 	public function search(Request $request){
 
-		$hotspot = Hotspot::where('id', '!=', '0');
-		// return var_dump($request->all() );
+		$hotspot = HotspotMaster::with('hotspots')->where('id', '!=', '0');
 
-		if( $request->has('locality') and $request->locality ){
-			$hotspot->where('locality', 'LIKE', '%'.$request->locality.'%');
+		if( $request->has('area') and $request->area ){
+			$hotspot->where('area', 'LIKE', '%'.$request->area.'%');
 		}
 
-		if( $request->has('city') and $request->city ){
-			$hotspot->where('city', $request->city);
+		if( $request->has('state') and $request->state ){
+			$hotspot->where('state', $request->state);
 		}
 
-		if( $request->has('municipal') and $request->municipal ){
-			$hotspot->where('municipal', $request->municipal);
-		}
-
-		if( $request->has('street') and $request->street ){
-			$hotspot->where('street', $request->street);
+		if( $request->has('road_name') and $request->road_name ){
+			$hotspot->where('road_name', $request->road_name);
 		}
 
 		
