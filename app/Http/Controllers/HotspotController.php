@@ -121,7 +121,11 @@ class HotspotController extends Controller {
 
 
 	public function displayAllHotspotMaster(){
-		return HotspotMaster::select('id', 'state', 'district', 'area', 'gps_location')->groupBy('area')->get();
+		$hotspot = HotspotMaster::where('id', '!=', '0');
+		$hotspot->whereHas('hotspots', function($q){
+		    $q->where('no_of_cases', '!=', '0' );
+		});
+		return $hotspot->select('id', 'state', 'district', 'area', 'gps_location')->groupBy('area')->get();
 	}
 
 
