@@ -125,6 +125,7 @@ class HotspotController extends Controller {
 		$hotspot->whereHas('hotspots', function($q){
 		    $q->where('no_of_cases', '!=', '0' );
 		});
+		$hotspot->setHidden(['hotspots']);
 		return $hotspot->select('id', 'state', 'district', 'area', 'gps_location')->groupBy('area')->get();
 	}
 
