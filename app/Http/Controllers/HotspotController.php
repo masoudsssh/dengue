@@ -121,7 +121,7 @@ class HotspotController extends Controller {
 
 
 	public function displayAllHotspotMaster(){
-		$hotspot = HotspotMaster::where('id', '!=', '0');
+		$hotspot = HotspotMaster::where('area', '!=', '');
 		$hotspot->whereHas('hotspots', function($q){
 		    $q->where('no_of_cases', '!=', '0' );
 		});
