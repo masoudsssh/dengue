@@ -19,6 +19,7 @@ Route::get('/index', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::post('upload', array('as'=>'FileUpload', 'uses'=>'HelperController@uploadFile' ));
+Route::post('import', array('as'=>'importExcel', 'uses'=>'HelperController@importExcelFile' ) );
 
 Route::get('map', function(){
 								return View::make('map'); 

@@ -6,6 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
+		"sammyk/laravel-facebook-sdk": "~2.0@de
         "thujohn/twitter": "~2.0",
         "guzzlehttp/guzzle": "~4.0",
         "skovmand/mailchimp-laravel": "1.*",

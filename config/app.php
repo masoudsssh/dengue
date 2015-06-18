@@ -146,8 +146,9 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		
-		'SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider',
+
+'Maatwebsite\Excel\ExcelServiceProvider',
+//		'SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider',
 		'Thujohn\Twitter\TwitterServiceProvider',
 
 	],
@@ -199,7 +200,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
-
+'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	],
 
 ];
