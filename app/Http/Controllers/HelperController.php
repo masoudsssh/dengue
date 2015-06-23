@@ -46,34 +46,57 @@ class HelperController extends Controller{
   		// reader methods
 		$results = $reader->get();
 
-                // Loop through all sheets
-                $results->each(function($sheet) {
-		    $cell = array();
-                    // Loop through all rows
-		    foreach($sheet as $index => $row){
-                         $cell[$index]=$row;
-                    }
+            // Loop through all sheets
+            $results->each(function($sheet) {
+    		    $cell = array();
+                        // Loop through all rows
+    		    foreach($sheet as $index => $row){
+                             $cell[$index]=$row;
+                        }
 
-$date = date_create();
-date_isodate_set($date, 2015, intval($cell['week']), 1);
-$week_day = date_format($date, 'Y-m-d');
-$week_day = strtotime( $week_day );
-$dateStart = strtotime( $cell['start'] );
+                $date = date_create();
+                date_isodate_set($date, 2015, intval($cell['week']), 1);
+                $week_day = date_format($date, 'Y-m-d');
+                $week_day = strtotime( $week_day );
+                $dateStart = strtotime( $cell['start'] );
 
-if( $dateStart > $week_day ){
-$last_week = Hotspot::where( 'week', intval($cell['week'])-1 )->where('road_name', $cell['road_name'] )->first();
-$no_of_cases = $cell['no_of_cases']-intval($last_week->no_of_cases) ;
-
+                if( $dateStart > $week_day ){
+                    $last_week = Hotspot::where( 'week', '<', intval($cell['week']) )
+                                    ->where('road_name', $cell['road_name'] )
+                                    ->where('state', $cell['state'])
+                                    ->orderBy('week', 'desc')
+                                    ->first();
+                    if( $last_week->isEmpty() ){
+                        $no_of_cases = $cell['no_of_cases']+intval($last_week->no_of_cases) ;
+                        $hotspot = Hotspot::insert(array(
+                            'state' => $cell['state'],
+                            'week' => $cell['week'],
+                            'road_name' => $cell['road_name'],
+                            'no_of_cases' => $no_of_cases, 
+                            'start' => $cell['start'],
+                            'end' => $cell['end']
+                        ));
+                    }else{
+                        $hotspot = Hotspot::insert(array(
+                            'state' => $cell['state'],
+                            'week' => $cell['week'],
+                            'road_name' => $cell['road_name'],
+                            'no_of_cases' => $cell['no_of_cases'],
+                            'start' => $cell['start'],
+                            'end' => $cell['end']
+                        ));
+                    }                
+                }else{
                     $hotspot = Hotspot::insert(array(
                         'state' => $cell['state'],
                         'week' => $cell['week'],
                         'road_name' => $cell['road_name'],
-                        'no_of_cases' => $no_of_cases, //$cell['no_of_cases'],
+                        'no_of_cases' => $cell['no_of_cases'],
                         'start' => $cell['start'],
                         'end' => $cell['end']
                     ));
-}
-                });
+                }
+            });
 
         $msg = array('message'=>'File is imported successfully.', 'status'=>200);
         return json_encode($msg);
