@@ -54,25 +54,22 @@ class HelperController extends Controller{
                          $cell[$index]=$row;
                     }
 
-$date = date_create();
-date_isodate_set($date, 2015, intval($cell['week']), 1);
-$week_day = date_format($date, 'Y-m-d');
-$week_day = strtotime( $week_day );
-$dateStart = strtotime( $cell['start'] );
-
-if( $dateStart > $week_day ){
-$last_week = Hotspot::where( 'week', intval($cell['week'])-1 )->where('road_name', $cell['road_name'] )->first();
-$no_of_cases = $cell['no_of_cases']-intval($last_week->no_of_cases) ;
-
+		    $date = new DateTime();
+		    $date->setISODate(6 ,1);
+		    $week_day = $date->format('m-d-Y');
+var_dump( $week_day );
+//if( 
+//var_dump( date_diff($week_day, $cell['start']) ); //>0 ){
+//	return 'false';
+//}
                     $hotspot = Hotspot::insert(array(
                         'state' => $cell['state'],
                         'week' => $cell['week'],
                         'road_name' => $cell['road_name'],
-                        'no_of_cases' => $no_of_cases, //$cell['no_of_cases'],
+                        'no_of_cases' => $cell['no_of_cases'],
                         'start' => $cell['start'],
                         'end' => $cell['end']
                     ));
-}
                 });
 
         $msg = array('message'=>'File is imported successfully.', 'status'=>200);
