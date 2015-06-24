@@ -54,19 +54,26 @@ class HelperController extends Controller{
                              $cell[$index]=$row;
                         }
 
+		if ($cell['week']!=""){
+
+if( strtolower($cell['state'])=='wilayah persekutuan' ){
+	$cell['start']="2090-01-01";
+}
+
                 $date = date_create();
                 date_isodate_set($date, 2015, intval($cell['week']), 1);
                 $week_day = date_format($date, 'Y-m-d');
                 $week_day = strtotime( $week_day );
                 $dateStart = strtotime( $cell['start'] );
 
-                if( $dateStart > $week_day ){
+                if( $dateStart >= $week_day ){
                     $last_week = Hotspot::where( 'week', '<', intval($cell['week']) )
                                     ->where('road_name', $cell['road_name'] )
                                     ->where('state', $cell['state'])
                                     ->orderBy('week', 'desc')
                                     ->first();
-                    if( $last_week->isEmpty() ){
+
+                    if( $last_week!=null ){
                         $no_of_cases = $cell['no_of_cases']+intval($last_week->no_of_cases) ;
                         $hotspot = Hotspot::insert(array(
                             'state' => $cell['state'],
@@ -85,7 +92,7 @@ class HelperController extends Controller{
                             'start' => $cell['start'],
                             'end' => $cell['end']
                         ));
-                    }                
+                    }
                 }else{
                     $hotspot = Hotspot::insert(array(
                         'state' => $cell['state'],
@@ -96,6 +103,7 @@ class HelperController extends Controller{
                         'end' => $cell['end']
                     ));
                 }
+               }
             });
 
         $msg = array('message'=>'File is imported successfully.', 'status'=>200);
