@@ -110,4 +110,19 @@ class UserController extends Controller {
 
 	}
 
+
+	public function destroy($id)
+	{
+		$user = User::where('id', $id)->first();
+        if ($user){
+            User::where('id', $id)->delete();
+            $msg = array('message'=>'The user is deleted successfully.', 'status'=>200);
+        	return json_encode($msg);
+        }else{
+            $msg = array('message'=>'The user does not exist.', 'status'=>401);
+        	return json_encode($msg);
+        }
+	}
+
+
 }

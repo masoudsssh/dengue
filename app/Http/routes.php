@@ -34,6 +34,7 @@ Route::post('hotspot', 'HotspotController@search');
 Route::get('hotspotmaster', 'HotspotController@displayAllHotspotMaster');
 
 Route::get('user', 'UserController@index');
+Route::delete('user/{id}', 'UserController@destroy');
 
 
 
