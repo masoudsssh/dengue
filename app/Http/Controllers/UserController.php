@@ -21,6 +21,12 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function index()
+	{
+		return User::get();
+	} 
+
 	public function login(Request $request)
 	{
 		if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))

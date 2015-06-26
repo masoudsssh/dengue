@@ -33,6 +33,8 @@ Route::resource('hotspot', 'HotspotController', ['except' => ['edit', 'create']]
 Route::post('hotspot', 'HotspotController@search');
 Route::get('hotspotmaster', 'HotspotController@displayAllHotspotMaster');
 
+Route::get('user', 'UserController@index');
+
 
 
 Route::resource('faq', 'FaqController', ['except' => ['edit', 'create']]);
